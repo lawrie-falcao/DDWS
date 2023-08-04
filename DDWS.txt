@@ -1,0 +1,110 @@
+sudo apt update
+
+sudo apt install apache2
+
+sudo systemctl status apache2
+
+hostname -I
+
+192.168.234.133
+
+sudo apt update
+
+sudo apt install bind9
+
+sudo nano /etc/bind/db.dnsproject.prepa.com
+
+$TTL 86400
+@   IN  SOA ns.dnsproject.prepa.com. admin.dnsproject.prepa.com. (
+            2023073101   ; Serial
+            3600         ; Refresh
+            1800         ; Retry
+            604800       ; Expire
+            86400 )      ; Minimum TTL
+
+    IN  NS  ns.dnsproject.prepa.com.
+ns  IN  A   192.168.234.133
+
+sudo nano /etc/bind/named.conf.local
+
+zone "192.168.234.133.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.192.168.234.133";
+};
+
+sudo nano /etc/bind/db.192.168.234.133
+
+$TTL 86400
+@   IN  SOA ns.dnsproject.prepa.com. admin.dnsproject.prepa.com. (
+            2023073101   ; Serial
+            3600         ; Refresh
+            1800         ; Retry
+            604800       ; Expire
+            86400 )      ; Minimum TTL
+
+    IN  NS  ns.dnsproject.prepa.com.
+10  IN  PTR dnsproject.prepa.com.
+
+sudo service bind9 restart
+
+nslookup dnsproject.prepa.com
+
+sudo nano /etc/hosts
+
+192.168.234.133 dnsproject.prepa.com
+
+http://dnsproject.prepa.com/
+
+apt install isc-dhcp-server
+
+nano /etc/default/isc-dhcp-server
+
+DHCPDv4_CONF=/etc/dhcp/dhcpd.conf
+INTERFACESv4="ens33"
+ip addr
+systemctl start isc-dhcp-server
+systemctl enable isc-dhcp-server
+
+sudo nano /etc/dhcp/dhcpd.conf
+
+subnet 192.168.234.0 netmask 255.255.255.0 {
+    range 192.168.234.100 192.168.234.200;
+    option routers 192.168.234.1;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    default-lease-time 600;
+    max-lease-time 7200;
+}
+
+sudo sysctl net.ipv4.ip_forward=1
+
+sudo apt install ufw
+
+sudo ufw allow 80/tcp
+
+sudo ufw deny proto icmp
+
+sudo ufw enable
+
+sudo ufw status
+
+sudo apt update
+
+sudo apt install samba
+
+mkdir ~/shared_folder
+
+chmod 777 ~/shared_folder
+
+sudo nano /etc/samba/smb.conf
+
+[SharedFolder]
+   path = /home/lawrie/shared_folder
+   read only = no
+   guest ok = yes
+   create mask = 0777
+   directory mask = 0777
+   force user = lawrie  
+
+sudo service smbd restart
+
+

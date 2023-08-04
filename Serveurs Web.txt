@@ -1,0 +1,61 @@
+Voici une documentation sur différents serveurs web, leurs caractéristiques, avantages et inconvénients :
+
+**1. Apache HTTP Server (Apache) :**
+- Caractéristiques : Apache est l'un des serveurs web les plus populaires et les plus anciens. Il est open source, multiplateforme et prend en charge un large éventail de modules pour étendre ses fonctionnalités.
+- Avantages :
+  - Haute stabilité et fiabilité.
+  - Excellente documentation et une grande communauté d'utilisateurs et de développeurs.
+  - Prise en charge des scripts CGI, PHP, Perl, Python, etc.
+  - Grande flexibilité grâce aux modules tiers.
+  - Configuration simple et conviviale via des fichiers de configuration.
+- Inconvénients :
+  - Peut être moins performant que certains serveurs web pour les charges très élevées.
+  - La configuration de certains modules peut être complexe.
+
+**2. Nginx :**
+- Caractéristiques : Nginx (prononcé "Engine X") est un serveur web et un serveur proxy inverse. Il est souvent utilisé comme serveur web pour les sites à forte charge et pour le traitement de contenu statique.
+- Avantages :
+  - Grande vitesse et performances élevées, particulièrement pour la distribution de contenu statique.
+  - Faible utilisation des ressources système, adapté aux charges élevées.
+  - Capacité à gérer un grand nombre de connexions simultanées.
+  - Prise en charge du proxy inverse et de la mise en cache.
+  - Fonctionnement asynchrone et non bloquant, ce qui le rend efficace pour les tâches d'entrées/sorties.
+- Inconvénients :
+  - La configuration peut sembler plus complexe pour les débutants par rapport à Apache.
+  - Certaines fonctionnalités avancées nécessitent des connaissances spécifiques.
+
+**3. Microsoft Internet Information Services (IIS) :**
+- Caractéristiques : IIS est le serveur web développé par Microsoft pour les systèmes d'exploitation Windows Server.
+- Avantages :
+  - Intégration étroite avec Windows Server et d'autres produits Microsoft.
+  - Facilité d'utilisation et d'installation sur les systèmes Windows.
+  - Support des technologies Microsoft telles que ASP.NET.
+  - Bonne intégration avec les outils de gestion et d'administration Windows.
+- Inconvénients :
+  - Limité aux systèmes d'exploitation Windows, pas de support natif pour les autres plates-formes.
+  - Moins populaire sur les serveurs publics Internet que Apache ou Nginx.
+  - Peut être moins performant que certains concurrents pour les charges très élevées.
+
+**4. Lighttpd (ou Lighty) :**
+- Caractéristiques : Lighttpd est un serveur web open source conçu pour être léger, rapide et sûr. Il est principalement utilisé pour les sites Web à fort trafic.
+- Avantages :
+  - Faible consommation de ressources système, adapté aux environnements à ressources limitées.
+  - Haute performance pour le traitement de contenu statique.
+  - Support natif du FastCGI et des scripts CGI.
+  - Facilité de configuration.
+- Inconvénients :
+  - Peut être moins performant que Nginx dans certaines situations de haute charge.
+  - Moins populaire et moins de documentation que Apache ou Nginx.
+
+**5. Caddy :**
+- Caractéristiques : Caddy est un serveur web moderne open source qui se concentre sur la simplicité d'utilisation et la configuration automatique grâce au support natif de Let's Encrypt.
+- Avantages :
+  - Configuration automatique des certificats SSL/TLS via Let's Encrypt.
+  - Interface utilisateur conviviale et simple.
+  - Facilité d'utilisation et d'installation.
+  - Support natif du protocole HTTP/2.
+- Inconvénients :
+  - Moins de modules tiers disponibles par rapport à Apache et Nginx.
+  - Peut être moins adapté pour les scénarios complexes nécessitant des configurations avancées.
+
+Chaque serveur web a ses propres forces et faiblesses, et le choix dépendra des besoins spécifiques de votre application ou de votre projet. Pour des sites Web de petite à moyenne taille, Apache et Nginx sont des choix populaires et bien établis. Pour les environnements à ressources limitées ou les sites statiques, Lighttpd peut être un bon choix. Si vous souhaitez une configuration automatique de certificats SSL/TLS, Caddy peut être une option intéressante. Enfin, si vous utilisez principalement des technologies Microsoft, IIS peut être le serveur web le mieux intégré à votre environnement Windows.
